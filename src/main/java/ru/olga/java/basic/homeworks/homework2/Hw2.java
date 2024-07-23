@@ -3,17 +3,17 @@ package ru.olga.java.basic.homeworks.homework2;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class hw2 {
+public class Hw2 {
     public static void main(String[] args) {
         printString(5, "Hello");
-        int a = 9;
+        int number = 9;
         int[] arr = {1, 2, 3, 4, 5, 6, 8, 5};
         int[] arr1 = {1, 2, 0, 5};
 
         sumBigElements(arr);
-        fillArray(arr, a);
+        fillArray(arr, number);
         System.out.println(Arrays.toString(arr));
-        encreaseArray(arr, a);
+        encreaseArray(arr, number);
         System.out.println(Arrays.toString(arr));
         compareHalfsOfArray(arr);
         findEqualSumOfArraysElements(arr);
@@ -26,6 +26,7 @@ public class hw2 {
     /**
      * 2.4*. метод, “перевораùивающий” входящий массив
      * Пример: { 1 2 3 4 } => { 4 3 2 1 }
+     *
      * @param arr1 массив, который нужно перевернуть
      */
     public static void reversArray(int[] arr1) {
@@ -45,10 +46,10 @@ public class hw2 {
     public static void сheckArraySort(int[] arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите сортировку:\n1 - по возрастанию\n2 - по убыванию");
-        int a = scanner.nextInt();
+        int sortType = scanner.nextInt();
         boolean flag = false;
         for (int i = 0; i < arr.length - 1; i++) {
-            if (a == 1) {//по возрастанию
+            if (sortType == 1) {//по возрастанию
                 if (arr[i] < arr[i + 1]) {
                     flag = true;
                 } else {
@@ -56,7 +57,7 @@ public class hw2 {
                     flag = false;
                     break;
                 }
-            } else if (a == 2) {//по убыванию
+            } else if (sortType == 2) {//по убыванию
                 if (arr[i] > arr[i + 1]) {
                     flag = true;
                 } else {
@@ -67,9 +68,9 @@ public class hw2 {
             }
         }
         if (flag) {
-            if (a == 1) {
+            if (sortType == 1) {
                 System.out.println("Элементы массива " + Arrays.toString(arr) + " расположены по возрастанию");
-            } else if (a == 2) {
+            } else if (sortType == 2) {
                 System.out.println("Элементы массива " + Arrays.toString(arr) + " расположены по убыванию2");
             }
         }
@@ -82,31 +83,26 @@ public class hw2 {
      * @param arr массив в котором ищем точку равенства элементов
      */
     public static void findEqualSumOfArraysElements(int[] arr) {
+        int sum = 0;
         int sumLeft = 0;
-        int sumRight = 0;
-        boolean flag = false;
         for (int i = 0; i < arr.length; i++) {
-            sumRight += arr[i];
-            for (int j = i + 1; j < arr.length; j++) {
-                sumLeft += arr[j];
-            }
-            if (sumRight == sumLeft) {
-                System.out.println("Точка равенства элементов массива находится между элементами " + (i + 1) + " и " + (i + 2));
-                flag = true;
-                break;
-            } else {
-                sumLeft = 0;
-            }
+            sum += arr[i];
         }
-        if (!flag) {
-            System.out.println("Точки равенства элементов массива нет");
+        for (int i = 0; i < arr.length; i++) {
+            sumLeft += arr[i];
+            if (sumLeft * 2 == sum) {
+                System.out.println("Точка найдена между элементами " + (i + 1) + " и " + (i + 2));
+            }
+
         }
 
     }
 
 
     public static void arraysSum(int[] args) {
+        for (int i = 0; i < args.length; i++) {
 
+        }
     }
 
     /**
@@ -139,11 +135,11 @@ public class hw2 {
      * массив, увелиùиваĀûий каждýй ÿлемент массива на указанное ùисло;
      *
      * @param arr массив, который нужно изменить
-     * @param a   число на которое нужно увеличить каждый элемент массива
+     * @param number   число на которое нужно увеличить каждый элемент массива
      */
-    private static void encreaseArray(int[] arr, int a) {
+    private static void encreaseArray(int[] arr, int number) {
         for (int i = 0; i < arr.length; i++) {
-            arr[i] += a;
+            arr[i] += number;
         }
     }
 
@@ -180,12 +176,12 @@ public class hw2 {
      * 2.1. метод, принимаĀûий в каùестве аргументов øелое ùисло и строку, и пеùатаĀûий в
      * консолþ строку указанное колиùество раз
      *
-     * @param a count
-     * @param b string
+     * @param count count
+     * @param word  string
      */
-    public static void printString(int a, String b) {
-        for (int i = 0; i < a; i++) {
-            System.out.println(b);
+    public static void printString(int count, String word) {
+        for (int i = 0; i < count; i++) {
+            System.out.println(word);
         }
     }
 }
