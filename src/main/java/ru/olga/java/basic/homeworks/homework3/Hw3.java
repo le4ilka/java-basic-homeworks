@@ -28,13 +28,13 @@ public class Hw3 {
         int sum = 0;
         if (arr.length < 2) {
             return -1;
-        } else {
-            for (int i = 0; i < arr[2].length; i++) {
-                sum += arr[2][i];
-            }
-            return sum;
         }
+        for (int i = 0; i < arr[2].length; i++) {
+            sum += arr[2][i];
+        }
+        return sum;
     }
+
 
     /**
      * 3.4. метод, который должен найти и вернуть максимальный элемент массива;
@@ -64,10 +64,11 @@ public class Hw3 {
     public static void nullDiagonal(int arr[][]) {
         System.out.println("Задание 3");
         for (int i = 0; i < arr.length; i++) {
+            arr[i][i] = 0;
+            arr[i][arr[i].length - i - 1] = 0;
+        }
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                if (i == j || j == arr[i].length - i - 1) {
-                    arr[i][j] = 0;
-                }
                 System.out.print(arr[i][j] + " ");
             }
             System.out.println();
