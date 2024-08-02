@@ -9,6 +9,11 @@ public class Hw2 {
         int number = 9;
         int[] arr = {1, 2, 3, 4, 5, 6, 8, 5};
         int[] arr1 = {1, 2, 0, 5};
+        int[] arr2 = {1, 2, 3};
+        int[] arr3 = {2, 2};
+        int[] arr4 = {1, 1, 1, 1, 1};
+        int[] arr5 = {4, 5, 4, 1, 1};
+
 
         sumBigElements(arr);
         fillArray(arr, number);
@@ -20,6 +25,8 @@ public class Hw2 {
 
         сheckArraySort(arr1);
         reversArray(arr1);
+
+        arraysSum(arr2, arr3, arr4);
 
     }
 
@@ -98,12 +105,29 @@ public class Hw2 {
 
     }
 
+    /**
+     *  метод, принимающий на вход набор целочисленных массивов, и получающий новый
+     * массив равный сумме входящих;
+     * @param args - массивы, элементы которых нужно сложить
+     */
 
-    public static void arraysSum(int[] args) {
+    public static void arraysSum(int[]... args) {
+        int maxLength = 0;
         for (int i = 0; i < args.length; i++) {
-
+            if (args[i].length > maxLength) {
+                maxLength = args[i].length;
+            }
         }
+        int[] sum = new int[maxLength];
+        for (int i = 0; i < args.length; i++) {
+            for (int j = 0; j < args[i].length; j++) {
+                sum[j] += args[i][j];
+            }
+        }
+        System.out.println("\nСумма элементов массивов равна: " + Arrays.toString(sum));
     }
+
+
 
     /**
      * 2.5. метод, принимаĀûий в каùестве аргумента øелоùисленнýй массив, и пеùатаĀûий в
@@ -134,8 +158,8 @@ public class Hw2 {
      * 2.4. метод, принимаĀûий в каùестве аргументов øелое ùисло и ссýлку на øелоùисленнýй
      * массив, увелиùиваĀûий каждýй ÿлемент массива на указанное ùисло;
      *
-     * @param arr массив, который нужно изменить
-     * @param number   число на которое нужно увеличить каждый элемент массива
+     * @param arr    массив, который нужно изменить
+     * @param number число на которое нужно увеличить каждый элемент массива
      */
     private static void encreaseArray(int[] arr, int number) {
         for (int i = 0; i < arr.length; i++) {
