@@ -32,11 +32,9 @@ public class Box {
     public String getStatus() {
         String status;
         if (isClosed) {
-            status = "коробка закрыта";
-        } else {
-            status = "коробка открыта";
+            return "коробка закрыта";
         }
-        return status;
+        return "коробка открыта";
     }
 
     public void fillBox(String item) {
