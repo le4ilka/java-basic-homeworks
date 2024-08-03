@@ -11,7 +11,7 @@ public class Dog extends Animal {
     }
 
     @Override
-    public int swimEnduranceCosts(int distance) {
+    protected int swimEnduranceCosts(int distance) {
         return distance * enduranceScore;
     }
 }

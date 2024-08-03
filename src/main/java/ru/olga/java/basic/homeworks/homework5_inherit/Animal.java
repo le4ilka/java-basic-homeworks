@@ -23,7 +23,7 @@ public abstract class Animal {
     }
 
 //    public abstract int swim(int distance);
-    public abstract int swimEnduranceCosts(int distance);
+    protected abstract int swimEnduranceCosts(int distance);
 
     public int swim(int distance) {
         int timeSwim = distance / speedSwim;
