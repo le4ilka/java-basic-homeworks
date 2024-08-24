@@ -76,10 +76,7 @@ public class MainCollections {
             avgAge += empList.get(i).getAge();
         }
         avgAge = avgAge / empList.size();
-        if (avgAge > avgMinAge) {
-            return true;
-        }
-        return false;
+        return avgAge > avgMinAge;
     }
 
     /**
