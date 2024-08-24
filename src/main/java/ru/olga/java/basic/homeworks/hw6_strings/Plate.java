@@ -23,10 +23,6 @@ public class Plate {
 
     public boolean redusingFood(int foodAmount) {
         currentAmountOfFood -= foodAmount;
-        if (currentAmountOfFood >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-        }
+        return currentAmountOfFood >= 0;
     }
+}
