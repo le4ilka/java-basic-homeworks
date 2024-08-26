@@ -7,6 +7,8 @@ public class Application {
         Transport car = new Car("BMW");
         Transport horse = new Horse("Plotva");
         Transport ccVechicle = new CrossCountryVechicle("Jeep");
+        Transport horse2 = new Horse("Verba");
+
 
         Human h1 = new Human("Ivan");
         Human h2 = new Human("Olga");
@@ -28,6 +30,19 @@ public class Application {
 
         h1.putOnTransport(car);
         h1.move(20, Places.FOREST);
+
+        h2.putOnTransport(ccVechicle);
+        h2.move(89, Places.FIELD);
+
+        h3.putOnTransport(horse);
+        h3.move(70, Places.FOREST);
+
+        horse2.move(3,Places.FIELD);
+
+        h1.putOnTransport(bike);
+        h1.move(99, Places.FOREST);
+
+        h1.move(94, Places.FOREST);
 
     }
 }

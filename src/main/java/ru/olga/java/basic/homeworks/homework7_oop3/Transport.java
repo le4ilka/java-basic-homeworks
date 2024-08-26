@@ -4,4 +4,7 @@ public interface Transport {
     String getName();
 
     boolean move (int distance, Places place);
+
+    void setDriver(Human driver);
+
 }
