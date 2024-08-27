@@ -17,5 +17,7 @@ public class hw11 {
         System.out.println(list);
         Collections.sort(list);
         System.out.println(list);
+        BinaryTree tree = new BinaryTree(list);
+        tree.binaryTreeFromList();
     }
 }
