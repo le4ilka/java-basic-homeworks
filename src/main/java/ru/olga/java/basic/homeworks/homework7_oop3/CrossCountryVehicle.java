@@ -1,6 +1,6 @@
 package ru.olga.java.basic.homeworks.homework7_oop3;
 
-public class CrossCountryVechicle implements Transport {
+public class CrossCountryVehicle implements Transport {
 
     private String name;
     private int fuel;
@@ -10,7 +10,7 @@ public class CrossCountryVechicle implements Transport {
         this.driver = driver;
     }
 
-    public CrossCountryVechicle(String name) {
+    public CrossCountryVehicle(String name) {
         this.name = name;
         this.fuel = 100;
     }

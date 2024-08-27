@@ -1,10 +1,10 @@
 package ru.olga.java.basic.homeworks.homework7_oop3;
 
-public class Bacycle implements Transport {
+public class Bicycle implements Transport {
     private String name;
     private Human driver;
 
-    public Bacycle(String name) {
+    public Bicycle(String name) {
         this.name = name;
     }
 
