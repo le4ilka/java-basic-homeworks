@@ -23,13 +23,27 @@ public class BinaryTree implements SearchTree {
         return list;
     }
 
-    public List binaryTreeFromList() {
-        List<Integer> binaryTreeList = new ArrayList<>();
-
+    public int binaryTreeFromList(List<Integer> list) {
         int midElementIndex = (list.size())/2;
-        binaryTreeList.add(list.get(midElementIndex));
-        System.out.println(binaryTreeList);
-       return  binaryTreeList;
+
+        List<Integer> subListLeft = new ArrayList<>(list.subList(0,midElementIndex));
+        //System.out.println(subListLeft);
+        List<Integer> subListRight = new ArrayList<>(list.subList(midElementIndex+1,list.size()));
+        //System.out.println(subListRight);
+
+        System.out.println((list.get(midElementIndex)));
+        int left = list.get(midElementIndex/2);
+        int right = list.get(midElementIndex+((list.size()-midElementIndex)/2));
+        System.out.println("[" + left + "   " + right + "]");
+
+        if (subListRight.size()==1 || subListLeft.size()==1){
+            System.out.println("Конец ветки");
+            return 1;
+        }
+        binaryTreeFromList(subListLeft);
+        binaryTreeFromList(subListRight);
+
+       return midElementIndex;
     }
 
 
