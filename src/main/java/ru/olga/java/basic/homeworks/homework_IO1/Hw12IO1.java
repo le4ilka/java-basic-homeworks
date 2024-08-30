@@ -1,9 +1,7 @@
 package ru.olga.java.basic.homeworks.homework_IO1;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -27,7 +25,20 @@ public class Hw12IO1 {
         String fileName = scanner.nextLine();
         System.out.println("Вы выбрали " + fileName + " файл содержит:");
 
-        try (InputStreamReader in = new InputStreamReader(new FileInputStream(fileName))) {
+        printFileToScreen(fileName);
+
+        System.out.println("\nУкажите какую строку добавить в файл:");
+        Scanner scannerForString = new Scanner(System.in);
+        String string = scannerForString.nextLine();
+
+        writeInFile(string, fileName);
+
+        printFileToScreen(fileName);
+
+    }
+
+    public static void printFileToScreen(String fileName) {
+        try (InputStreamReader in = new InputStreamReader(new BufferedInputStream(new FileInputStream(fileName)))) {
             int n = in.read();
             while (n != -1) {
                 System.out.print((char) n);
@@ -35,8 +46,16 @@ public class Hw12IO1 {
             }
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+    }
 
+    public static void writeInFile(String string, String fileName) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName, true))) {
+            byte[] buffer = string.getBytes(StandardCharsets.UTF_8);
+            out.write(buffer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
