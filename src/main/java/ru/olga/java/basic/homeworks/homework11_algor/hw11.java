@@ -1,7 +1,6 @@
 package ru.olga.java.basic.homeworks.homework11_algor;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class hw11 {
@@ -24,12 +23,17 @@ public class hw11 {
         list.add(7);
         list.add(15);
         list.add(16);
-
-
         System.out.println(list);
-        Collections.sort(list);
-        System.out.println(list);
+
         BinaryTree tree = new BinaryTree(list);
-        tree.binaryTreeFromList(list);
+        list = tree.getSortedList();
+        System.out.println(list);
+
+       // tree.printBinaryTreeFromList(list);
+       // tree.find(5);
+
+        tree.makeBinaryTreeFromList(list, 0);
+
+
     }
 }
