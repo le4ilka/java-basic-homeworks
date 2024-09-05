@@ -62,7 +62,7 @@ public class BinaryTree implements SearchTree {
         int left = list.get(midElementIndex/2);
         int right = list.get(midElementIndex+((list.size()-midElementIndex)/2));
         System.out.println("[" + left + "   " + right + "]");
-        root.addChild(left, right);
+//         root.addChild(left, right);
 
 
         if (subListRight.size()==1 || subListLeft.size()==1){
