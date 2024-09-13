@@ -3,9 +3,9 @@ package ru.olga.java.basic.homeworks.homework14_multiTh1;
 public class FillArrayByThreads implements Runnable {
     private int begin;
     private int end;
-    private Double[] array;
+    private double[] array;
 
-    public FillArrayByThreads(Double[] array, int begin, int end) {
+    public FillArrayByThreads(double[] array, int begin, int end) {
         this.begin = begin;
         this.end = end;
         this.array = array;
