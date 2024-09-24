@@ -1,0 +1,13 @@
+ CREATE TABLE `question`
+ (
+ `question_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ `name_question` varchar(100) DEFAULT NULL
+ );
+ CREATE TABLE  `answer`
+(
+`answer_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name_answer` varchar(100) DEFAULT NULL,
+`question_id` int DEFAULT NULL,
+`is_correct` boolean DEFAULT false,
+ CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE CASCADE
+ );
