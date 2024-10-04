@@ -1,31 +1,18 @@
 package ru.olga.java.basic.homeworks.homework19_generics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Box<E extends Fruit> {
+public class Box<T extends Fruit> {
+    private List<T> inBox;
 
-    private Enum<BoxTypes> boxType;
-    private List<E> inBox;
-
-    public Box(Enum boxType) {
-        this.boxType = boxType;
+    public Box() {
         this.inBox = new ArrayList<>();
     }
 
-    public void add(E... elements) {
-        for (Fruit element : elements) {
-            if (boxType.equals(BoxTypes.AppleBox) && !(element instanceof Apple)) {
-                System.out.println("Нельзя положить " + element.getClass() + "  неяблоки в яблочную корзинку");
-                continue;
-            }
-            if (boxType.equals(BoxTypes.OrangeBox) && !(element instanceof Orange)) {
-                System.out.println("Нельзя положить " + element.getClass() + " неапельсины в апельсинную корзинку");
-                continue;
-            }
-            inBox.add((E) element);
-        }
-        System.out.println("Фрукты размещены в корзинке");
+    public void add(T... elements) {
+        inBox.addAll(Arrays.asList(elements));
     }
 
     public int getWeight() {
@@ -33,38 +20,27 @@ public class Box<E extends Fruit> {
         for (Fruit elem : inBox) {
             weight += elem.getWeight();
         }
-        System.out.println("ВЕС: " + weight);
+        System.out.println("Вес: " + weight);
         return weight;
     }
 
     public boolean compare(Box boxToCompare) {
-        if (this.getWeight() == boxToCompare.getWeight())
-            return true;
-        return false;
+        return this.getWeight() == boxToCompare.getWeight();
     }
 
-    public void transferFruitsFrom(Box boxFrom){
-            for (Object element : boxFrom.inBox) {
-                if (boxType.equals(BoxTypes.AppleBox) && !(element instanceof Apple)) {
-                    System.out.println("Нельзя положить " + element.getClass() + "  неяблоки в яблочную корзинку");
-                    continue;
-                }
-                if (boxType.equals(BoxTypes.OrangeBox) && !(element instanceof Orange)) {
-                    System.out.println("Нельзя положить " + element.getClass() + " неапельсины в апельсинную корзинку");
-                    continue;
-                }
-                inBox.add((E) element);
-                boxFrom.inBox.remove(element);
-            }
-            System.out.println("Фрукты перемещены из " + boxFrom + " в " + this);
+    public void transferFruits(Box<? super T> dest, Box<? extends T> src) {
+        dest.inBox.addAll(src.inBox);
+        src.inBox.clear();
+        System.out.println("Фрукты перемещены");
     }
 
     @Override
     public String toString() {
-        System.out.println("\nThere is in " + boxType + " box: ");
+        System.out.println("There is in " + " box: ");
         for (Fruit elem : inBox) {
             System.out.println(elem);
         }
+        getWeight();
         return super.toString();
     }
 }
