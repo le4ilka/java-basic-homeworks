@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TreeNode {
-    //private String name;
     private int value;
     private List<TreeNode> childs;
 
@@ -13,14 +12,6 @@ public class TreeNode {
         this.value = value;
         this.childs = new ArrayList<>();
     }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 
     public int  getValue() {
         return value;

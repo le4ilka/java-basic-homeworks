@@ -25,64 +25,31 @@ public class BinaryTree implements SearchTree {
         return list;
     }
 
-    public int printBinaryTreeFromList(List<Integer> list) {
-        int midElementIndex = (list.size())/2;
 
-        List<Integer> subListLeft = new ArrayList<>(list.subList(0,midElementIndex));
+    public TreeNode makeBinaryTreeFromList(List<Integer> list, int n) {
+        int midElementIndex = (list.size()) / 2;
+
+        List<Integer> subListLeft = new ArrayList<>(list.subList(0, midElementIndex));
         //System.out.println(subListLeft);
-        List<Integer> subListRight = new ArrayList<>(list.subList(midElementIndex+1,list.size()));
-        //System.out.println(subListRight);
-
-        System.out.println("Вершина " + (list.get(midElementIndex)));
-        int left = list.get(midElementIndex/2);
-        int right = list.get(midElementIndex+((list.size()-midElementIndex)/2));
-        System.out.println("[" + left + "   " + right + "]");
-
-        if (subListRight.size()==1 || subListLeft.size()==1){
-            System.out.println("Конец ветки");
-            return 1;
-        }
-        printBinaryTreeFromList(subListLeft);
-        printBinaryTreeFromList(subListRight);
-
-       return midElementIndex;
-    }
-
-    public TreeNode makeBinaryTreeFromList(List<Integer> list, int n){
-        int midElementIndex = (list.size())/2;
-
-        List<Integer> subListLeft = new ArrayList<>(list.subList(0,midElementIndex));
-        //System.out.println(subListLeft);
-        List<Integer> subListRight = new ArrayList<>(list.subList(midElementIndex+1,list.size()));
+        List<Integer> subListRight = new ArrayList<>(list.subList(midElementIndex + 1, list.size()));
         //System.out.println(subListRight);
 
         System.out.println("Вершина " + (list.get(midElementIndex)));
         TreeNode root = new TreeNode(list.get(midElementIndex));
 
-        int left = list.get(midElementIndex/2);
-        int right = list.get(midElementIndex+((list.size()-midElementIndex)/2));
+        int left = list.get(midElementIndex / 2);
+        int right = list.get(midElementIndex + ((list.size() - midElementIndex) / 2));
         System.out.println("[" + left + "   " + right + "]");
-//         root.addChild(left, right);
+        //root.addChild(left, right);
 
-
-        if (subListRight.size()==1 || subListLeft.size()==1){
+        if (subListRight.size() == 1 || subListLeft.size() == 1) {
             System.out.println("Конец ветки");
             return root;
         }
 
-        makeBinaryTreeFromList(subListLeft, n+1);
-        makeBinaryTreeFromList(subListRight, n+1);
+        makeBinaryTreeFromList(subListLeft, n + 1);
+        makeBinaryTreeFromList(subListRight, n + 1);
 
         return root;
     }
-
-    public void printTree(TreeNode treeNode){
-        System.out.println(treeNode.getValue());
-        for (int i = 0; i < treeNode.getChilds().size(); i++) {
-            printTree(treeNode.getChilds().get(i));
-        }
-
-
-    }
-
 }
