@@ -20,7 +20,6 @@ public class Box<T extends Fruit> {
         for (Fruit elem : inBox) {
             weight += elem.getWeight();
         }
-        System.out.println("Вес: " + weight);
         return weight;
     }
 
@@ -31,7 +30,6 @@ public class Box<T extends Fruit> {
     public void transferFruits(Box<? super T> dest, Box<? extends T> src) {
         dest.inBox.addAll(src.inBox);
         src.inBox.clear();
-        System.out.println("Фрукты перемещены");
     }
 
     @Override
