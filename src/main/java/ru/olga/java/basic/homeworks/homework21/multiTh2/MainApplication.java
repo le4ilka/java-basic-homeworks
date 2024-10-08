@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
  */
 public class MainApplication {
 
-    private static String lastLetter = "C";
+    private static volatile String lastLetter = "C";
     private static final Object monitor = new Object();
 
     public static void main(String[] args) {
@@ -32,10 +32,11 @@ public class MainApplication {
                         monitor.wait();
                     }
                     lastLetter = "A";
-                    System.out.println(lastLetter);
+                    System.out.print(lastLetter);
                     monitor.notifyAll();
                 }
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }
@@ -49,7 +50,7 @@ public class MainApplication {
                         monitor.wait();
                     }
                     lastLetter = "B";
-                    System.out.println(lastLetter);
+                    System.out.print(lastLetter);
                     monitor.notifyAll();
                 }
             } catch (InterruptedException e) {
@@ -66,7 +67,7 @@ public class MainApplication {
                         monitor.wait();
                     }
                     lastLetter = "C";
-                    System.out.println(lastLetter);
+                    System.out.print(lastLetter);
                     monitor.notifyAll();
                 }
             } catch (InterruptedException e) {
