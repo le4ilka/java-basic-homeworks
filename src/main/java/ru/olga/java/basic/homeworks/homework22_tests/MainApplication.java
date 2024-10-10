@@ -1,27 +1,30 @@
 package ru.olga.java.basic.homeworks.homework22_tests;
 
-import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 
 public class MainApplication {
+
+    private static final Logger LOGGER = LogManager.getLogger(MainApplication.class);
 
     public static void main(String[] args) {
         int[] data = {3, 2, 3, 1, 5, 6, 7};
         int[] data1 = {1, 2, 1, 2, 2};
         int[] data2 = {2, 2, 2, 2};
-        int[] data3 = {1 ,1};
-        int[] data4 = {1 ,3};
-        System.out.println(Arrays.toString(partArray(data)));
-        System.out.println(Arrays.toString(partArray(data1)));
-        //System.out.println(Arrays.toString(partArray(data3)));
-        System.out.println(Arrays.toString(partArray(data4)));
-        System.out.println(checkElements(data));
-        System.out.println(checkElements(data1));
-        System.out.println(checkElements(data2));
-        System.out.println(checkElements(data3));
-        System.out.println(checkElements(data4));
+        int[] data3 = {1, 1};
+        int[] data4 = {1, 3};
+
+        LOGGER.info("Часть массива после 1 первого массива: {}", ()->Arrays.toString(partArray(data)));
+        LOGGER.info("Часть массива после 1 второго массива: {}", ()->Arrays.toString(partArray(data1)));
+        LOGGER.info("Часть массива после 1 третьего массива: {}", ()->Arrays.toString(partArray(data4)));
+        LOGGER.info("Проверка первого массива на 1 и 2: {}", ()->checkElements(data));
+        LOGGER.info("Проверка второго массива на 1 и 2: {}", ()->checkElements(data1));
+        LOGGER.info("Проверка третьего массива на 1 и 2: {}", ()->checkElements(data2));
+        LOGGER.info("Проверка четвертого массива на 1 и 2: {}", ()->checkElements(data3));
+        LOGGER.info("Проверка пятого массива на 1 и 2: {}", ()->checkElements(data4));
+
     }
 
     public static int[] partArray(int[] array) {
@@ -42,6 +45,7 @@ public class MainApplication {
             if (array[i] != 1 && array[i] != 2) {
                 return false;
             }
+            Arrays.sort(array);
             if (((Arrays.binarySearch(array, 1)) < 0) || ((Arrays.binarySearch(array, 2)) < 0)) {
                 return false;
             }
