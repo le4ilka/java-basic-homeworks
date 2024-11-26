@@ -35,6 +35,7 @@ public class main {
         binaryTree.find(18);
         binaryTree.find(0);
 
+        System.out.println(binaryTree.getSortedList());
 
     }
 }
